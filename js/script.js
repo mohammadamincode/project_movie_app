@@ -93,7 +93,7 @@ function clearBtn() {
 
 getMovies(API_Url);
 function getMovies(url) {
-  header.scrollIntoView({
+  tagsEl.scrollIntoView({
     behavior: "smooth",
   });
   loadingContainer.classList.remove("is-disabled");
@@ -206,10 +206,7 @@ form.addEventListener("submit", (e) => {
 
 const logo = document.getElementById("logo");
 logo.addEventListener("click", (e) => {
-  selectedGenre = [];
-  setGenre();
-  getMovies(API_Url);
-  search.value = "";
+  location.reload();
 });
 
 function highlightSelection() {
@@ -231,7 +228,10 @@ function highlightSelection() {
 
 const refresh = document.getElementById("refresh");
 refresh.addEventListener("click", (e) => {
-  location.reload();
+  selectedGenre = [];
+  setGenre();
+  getMovies(API_Url);
+  search.value = "";
 });
 
 next.addEventListener("click", () => {
@@ -245,9 +245,6 @@ prev.addEventListener("click", () => {
   }
 });
 function pageCall(page) {
-  header.scrollIntoView({
-    behavior: "smooth",
-  });
   let urlSplit = lastUrl.split("?");
   let queryParams = urlSplit[1].split("&");
   let key = queryParams[queryParams.length - 1].split("=");
