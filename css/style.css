@@ -342,3 +342,14 @@ main {
     margin: 20px;
   }
 }
+@media (max-width: 300px) {
+  #form {
+    padding: 0.5rem 5px;
+    border-radius: 50px;
+    font-size: 0.5rem;
+    width: 80vw;
+  }
+  #search-submit i {
+    padding-right: 30px;
+  }
+}
