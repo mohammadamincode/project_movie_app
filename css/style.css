@@ -155,6 +155,10 @@ main {
   overflow-y: scroll;
   color: #fff;
 }
+#story {
+  text-align: justify;
+  text-justify: inter-word;
+}
 .overview h3 {
   padding-top: 10px;
   margin-top: 10px;
@@ -212,6 +216,7 @@ main {
   letter-spacing: 2px;
   font-size: 20px;
 }
+
 .refresh button:hover {
   background-color: orange;
   color: var(--primary-color);
@@ -301,8 +306,31 @@ main {
 .is-disabled {
   display: none;
 }
-
+#back {
+  align-self: center;
+  justify-self: center;
+  margin-left: 50px;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  border: 2px solid orange;
+  border-radius: 1rem;
+  margin: 30px;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 900;
+  transition: all 0.1s ease-in;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+#back:hover {
+  background-color: orange;
+  color: var(--primary-color);
+  cursor: pointer;
+}
 @media (max-width: 575.98px) {
+  .no-result {
+    font-size: 1rem;
+  }
   header {
     flex-wrap: wrap;
     justify-content: center;

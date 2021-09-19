@@ -119,8 +119,17 @@ function getMovies(url) {
           behavior: "smooth",
         });
       } else {
-        main.innerHTML = `<h1 class="no-result">No Results Found</h1>`;
+        main.innerHTML = `
+        <h1 class="no-result">No Results Found</h1>
+        <button id="back">Back</button>
+        `;
         pagination.classList.add("is-disabled");
+        const back = document.getElementById("back");
+        back.addEventListener("click", () => {
+          selectedGenre = [];
+          setGenre();
+          getMovies(API_Url);
+        });
       }
     });
 }
@@ -159,7 +168,7 @@ function showMovies(data) {
          <p> <span>${vote_average} of 10 | ${vote_count} votes</span></p>
          <p>${release_date}</p>
               <h3>Overview</h3>
-              ${overview}
+              <p id="story">${overview}</p>
           </div>
           </div>
       `;
@@ -191,7 +200,10 @@ form.addEventListener("submit", (e) => {
 
 const logo = document.getElementById("logo");
 logo.addEventListener("click", (e) => {
-  location.reload();
+  selectedGenre = [];
+  setGenre();
+  getMovies(API_Url);
+  search.value = "";
 });
 
 function highlightSelection() {
