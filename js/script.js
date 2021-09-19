@@ -141,7 +141,11 @@ function showMovies(data) {
     movieEl.classList.add("movie");
     movieEl.innerHTML = `
     <div class="movie-image">
-    <img src="${poster_path? IMG_Url + poster_path: "https://fakeimg.pl/300x500/373b69/000/?text=No Image :("}" alt="${title}">
+    <img src="${
+      poster_path
+        ? IMG_Url + poster_path
+        : "https://fakeimg.pl/300x500/373b69/000/?text=No Image :("
+    }" alt="${title}">
     
     </div>
 
