@@ -17,21 +17,26 @@
       rel="icon"
       type="image/x-icon"
     />
-    <title>Movie App ( Netflix )</title>
+    <title>Netflix</title>
   </head>
   <body>
     <header id="header">
       <div id="logo" class="logo">
         <img src="img/logo.png" alt="Logo" />
       </div>
+      <button id="home" class="is-disabled">Clear Seach</button>
       <form id="form">
-        <input id="search" type="search" placeholder="Search" class="search" />
+        <input id="search" type="text" placeholder="Search" class="search" />
         <button id="search-submit" type="submit">
           <i class="fas fa-search"></i>
         </button>
       </form>
     </header>
     <div id="tags"></div>
+    <div id="loading-container" class="loading-container">
+      <div class="loading"></div>
+      <div id="loading-text">Loading Movies</div>
+    </div>
     <main id="main">
       <div class="vpn-use">
         <h1 lang="fa">

@@ -13,6 +13,7 @@ const up = document.getElementById("up");
 const header = document.getElementById("header");
 const pagination = document.getElementById("pagination");
 const loadingContainer = document.getElementById("loading-container");
+const home = document.getElementById("home");
 
 let currentPage = 1;
 let nextPage = 2;
@@ -93,7 +94,7 @@ function clearBtn() {
 
 getMovies(API_Url);
 function getMovies(url) {
-  header.scrollIntoView({
+  tagsEl.scrollIntoView({
     behavior: "smooth",
   });
   loadingContainer.classList.remove("is-disabled");
@@ -199,6 +200,7 @@ form.addEventListener("submit", (e) => {
   setGenre();
   if (searchTerm) {
     getMovies(searchURL + "&query=" + searchTerm);
+    home.classList.remove("is-disabled");
   } else {
     getMovies(API_Url);
   }
@@ -206,10 +208,7 @@ form.addEventListener("submit", (e) => {
 
 const logo = document.getElementById("logo");
 logo.addEventListener("click", (e) => {
-  selectedGenre = [];
-  setGenre();
-  getMovies(API_Url);
-  search.value = "";
+  location.reload();
 });
 
 function highlightSelection() {
@@ -231,7 +230,10 @@ function highlightSelection() {
 
 const refresh = document.getElementById("refresh");
 refresh.addEventListener("click", (e) => {
-  location.reload();
+  selectedGenre = [];
+  setGenre();
+  getMovies(API_Url);
+  search.value = "";
 });
 
 next.addEventListener("click", () => {
@@ -245,9 +247,6 @@ prev.addEventListener("click", () => {
   }
 });
 function pageCall(page) {
-  header.scrollIntoView({
-    behavior: "smooth",
-  });
   let urlSplit = lastUrl.split("?");
   let queryParams = urlSplit[1].split("&");
   let key = queryParams[queryParams.length - 1].split("=");
@@ -268,4 +267,11 @@ up.addEventListener("click", () => {
   header.scrollIntoView({
     behavior: "smooth",
   });
+});
+home.addEventListener("click", () => {
+  search.value = "";
+  selectedGenre = [];
+  setGenre();
+  getMovies(API_Url);
+  home.classList.add("is-disabled");
 });
