@@ -12,8 +12,6 @@ const next = document.getElementById("next");
 const up = document.getElementById("up");
 const header = document.getElementById("header");
 const pagination = document.getElementById("pagination");
-const loadingContainer = document.getElementById("loading-container");
-const home = document.getElementById("home");
 
 let currentPage = 1;
 let nextPage = 2;
@@ -45,7 +43,6 @@ const genres = [
 let selectedGenre = [];
 setGenre();
 function setGenre() {
-  loadingContainer.classList.remove("is-disabled");
   tagsEl.innerHTML = "";
   genres.forEach((genre) => {
     const t = document.createElement("div");
@@ -70,7 +67,6 @@ function setGenre() {
       highlightSelection();
     });
     tagsEl.append(t);
-    loadingContainer.classList.add("is-disabled");
   });
 }
 
@@ -97,12 +93,10 @@ function getMovies(url) {
   tagsEl.scrollIntoView({
     behavior: "smooth",
   });
-  loadingContainer.classList.remove("is-disabled");
   lastUrl = url;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      loadingContainer.classList.add("is-disabled");
       console.log(data.results);
       if (data.results.length !== 0) {
         showMovies(data.results);
@@ -140,7 +134,6 @@ function getMovies(url) {
 }
 
 function showMovies(data) {
-  loadingContainer.classList.remove("is-disabled");
   main.innerHTML = "";
 
   data.forEach((movie) => {
@@ -179,7 +172,6 @@ function showMovies(data) {
           </div>
       `;
     main.appendChild(movieEl);
-    loadingContainer.classList.add("is-disabled");
     pagination.classList.remove("is-disabled");
   });
 }
@@ -267,11 +259,4 @@ up.addEventListener("click", () => {
   header.scrollIntoView({
     behavior: "smooth",
   });
-});
-home.addEventListener("click", () => {
-  search.value = "";
-  selectedGenre = [];
-  setGenre();
-  getMovies(API_Url);
-  home.classList.add("is-disabled");
 });
