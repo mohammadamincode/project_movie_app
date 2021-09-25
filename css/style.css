@@ -596,6 +596,22 @@ main {
   top: 0;
   width: 100px;
 }
+#home {
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 2px solid orange;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.1s ease-in;
+  font-family: inherit;
+}
+#home:hover {
+  background-color: orange;
+  color: var(--primary-color);
+  cursor: pointer;
+}
 @media (max-width: 575.98px) {
   .no-result {
     font-size: 1rem;
