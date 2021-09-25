@@ -12,7 +12,6 @@ const next = document.getElementById("next");
 const up = document.getElementById("up");
 const header = document.getElementById("header");
 const pagination = document.getElementById("pagination");
-const loadingContainer = document.getElementById("loading-container");
 
 let currentPage = 1;
 let nextPage = 2;
@@ -44,7 +43,6 @@ const genres = [
 let selectedGenre = [];
 setGenre();
 function setGenre() {
-  loadingContainer.classList.remove("is-disabled");
   tagsEl.innerHTML = "";
   genres.forEach((genre) => {
     const t = document.createElement("div");
@@ -69,7 +67,6 @@ function setGenre() {
       highlightSelection();
     });
     tagsEl.append(t);
-    loadingContainer.classList.add("is-disabled");
   });
 }
 
@@ -93,15 +90,10 @@ function clearBtn() {
 
 getMovies(API_Url);
 function getMovies(url) {
-  header.scrollIntoView({
-    behavior: "smooth",
-  });
-  loadingContainer.classList.remove("is-disabled");
   lastUrl = url;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      loadingContainer.classList.add("is-disabled");
       console.log(data.results);
       if (data.results.length !== 0) {
         showMovies(data.results);
@@ -122,6 +114,10 @@ function getMovies(url) {
           prev.classList.remove("disabled");
           next.classList.remove("disabled");
         }
+
+        header.scrollIntoView({
+          behavior: "smooth",
+        });
       } else {
         main.innerHTML = `
         <h1 class="no-result">No Results Found</h1>
@@ -139,7 +135,6 @@ function getMovies(url) {
 }
 
 function showMovies(data) {
-  loadingContainer.classList.remove("is-disabled");
   main.innerHTML = "";
 
   data.forEach((movie) => {
@@ -178,7 +173,6 @@ function showMovies(data) {
           </div>
       `;
     main.appendChild(movieEl);
-    loadingContainer.classList.add("is-disabled");
     pagination.classList.remove("is-disabled");
   });
 }
@@ -245,9 +239,6 @@ prev.addEventListener("click", () => {
   }
 });
 function pageCall(page) {
-  header.scrollIntoView({
-    behavior: "smooth",
-  });
   let urlSplit = lastUrl.split("?");
   let queryParams = urlSplit[1].split("&");
   let key = queryParams[queryParams.length - 1].split("=");
