@@ -100,6 +100,10 @@ main {
 }
 .tag:hover {
   transform: scale(1.1);
+  box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  -moz-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  transform: scale(1);
 }
 .movie {
   width: 300px;
@@ -366,12 +370,6 @@ main {
     display: flex;
     justify-content: center;
     text-align: center;
-  }
-  .tag:hover {
-    box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
-    -moz-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
-    -webkit-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
-    transform: scale(1);
   }
 }
 @media (max-width: 300px) {
