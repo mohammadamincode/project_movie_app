@@ -13,6 +13,10 @@ const up = document.getElementById("up");
 const header = document.getElementById("header");
 const pagination = document.getElementById("pagination");
 
+window.onscroll = function () {
+  scrollFunction();
+};
+
 let currentPage = 1;
 let nextPage = 2;
 let prevPage = 3;
@@ -255,8 +259,16 @@ function pageCall(page) {
   }
 }
 
-up.addEventListener("click", () => {
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    up.style.display = "block";
+  } else {
+    up.style.display = "none";
+  }
+}
+
+function topFunction() {
   header.scrollIntoView({
     behavior: "smooth",
   });
-});
+}

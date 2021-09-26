@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 * {
   margin: 0;
+  outline: 0;
 }
 :root {
   --primary-color: #22254b;
@@ -43,6 +44,9 @@ header {
   display: flex;
   position: relative;
 }
+.search:focus::placeholder {
+  letter-spacing: 5px;
+}
 .search,
 #search-submit {
   background-color: transparent;
@@ -56,10 +60,10 @@ header {
   padding: 10px;
   transition: color 0.2s ease-in-out;
   transition: transform 0.3s ease-in;
+  cursor: pointer;
 }
 #search-submit:hover i {
   transform: rotate(360deg);
-  cursor: pointer;
 }
 .search:focus {
   outline: none;
@@ -212,7 +216,7 @@ main {
   background-color: transparent;
   padding: 0.5rem 1rem;
   border: 2px solid orange;
-  border-radius: 1rem;
+  border-radius: 2rem;
   margin: 30px;
   color: inherit;
   font-family: inherit;
@@ -298,8 +302,8 @@ main {
 }
 .go-up {
   position: fixed;
-  right: 30px;
-  bottom: 30px;
+  right: 20px;
+  bottom: 20px;
   color: orange;
   font-size: 3rem;
   cursor: pointer;
@@ -370,6 +374,9 @@ main {
     display: flex;
     justify-content: center;
     text-align: center;
+  }
+  .go-up {
+    font-size: 2rem;
   }
 }
 @media (max-width: 300px) {
