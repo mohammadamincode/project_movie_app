@@ -240,11 +240,13 @@ refresh.addEventListener('click', (e) => {
 });
 
 next.addEventListener('click', () => {
+  loadingContainer.classList.remove('is-disabled');
   if (nextPage <= totalPages) {
     pageCall(nextPage);
   }
 });
 prev.addEventListener('click', () => {
+  loadingContainer.classList.remove('is-disabled');
   if (prevPage > 0) {
     pageCall(prevPage);
   }
